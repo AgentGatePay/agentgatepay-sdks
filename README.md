@@ -8,12 +8,12 @@ Official JavaScript/TypeScript and Python SDKs for [AgentGatePay](https://api.ag
 
 ## Overview
 
-AgentGatePay enables AI agents to make and accept cryptocurrency payments with multi-chain support (Ethereum, Base, Polygon, Arbitrum) for USDC, USDT, and DAI.
+AgentGatePay enables AI agents to make and accept cryptocurrency payments with multi-chain support (Ethereum, Base, Polygon, Arbitrum) for stablecoins (USDC, USDT, DAI).
 
 **Key Features:**
 - 🤖 Built for AI agents and autonomous systems
 - ⛓️ Multi-chain support (Ethereum, Base, Polygon, Arbitrum)
-- 💰 Multiple stablecoins (USDC, USDT, DAI)
+- 💰 Multiple stablecoins (USDC on all chains, USDT/DAI on most)
 - 🔐 AP2 mandate protocol for budget-controlled payments
 - 🔌 MCP (Model Context Protocol) integration
 - 📊 Real-time analytics and webhooks
@@ -111,12 +111,17 @@ payment = client.payments.submit_payment(
 
 ## Supported Chains & Tokens
 
-| Chain | Chain ID | Network Name | Tokens |
-|-------|----------|--------------|--------|
-| **Ethereum** | 1 | Ethereum Mainnet | USDC, USDT, DAI |
-| **Base** | 8453 | Base | USDC, USDT, DAI |
-| **Polygon** | 137 | Polygon | USDC, USDT, DAI |
-| **Arbitrum** | 42161 | Arbitrum One | USDC, USDT, DAI |
+| Token | Ethereum | Base | Polygon | Arbitrum |
+|-------|----------|------|---------|----------|
+| **USDC** | ✅ (6 decimals) | ✅ (6 decimals) | ✅ (6 decimals) | ✅ (6 decimals) |
+| **USDT** | ✅ (6 decimals) | ❌ | ✅ (6 decimals) | ✅ (6 decimals) |
+| **DAI** | ✅ (18 decimals) | ✅ (18 decimals) | ✅ (18 decimals) | ✅ (18 decimals) |
+
+**Chain Details:**
+- **Ethereum** (Chain ID: 1) - Ethereum Mainnet
+- **Base** (Chain ID: 8453) - Base (USDT not supported)
+- **Polygon** (Chain ID: 137) - Polygon PoS
+- **Arbitrum** (Chain ID: 42161) - Arbitrum One
 
 ---
 
