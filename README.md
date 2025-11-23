@@ -12,6 +12,7 @@ AgentGatePay enables AI agents to make and accept cryptocurrency payments with m
 
 **Key Features:**
 - 🤖 Built for AI agents and autonomous systems
+- 🛡️ **AIF (Agent Interaction Firewall)** - First firewall built for AI agents
 - ⛓️ Multi-chain support (Ethereum, Base, Polygon, Arbitrum)
 - 💰 Multiple stablecoins (USDC on all chains, USDT/DAI on most)
 - 🔐 AP2 mandate protocol for budget-controlled payments
@@ -122,6 +123,121 @@ payment = client.payments.submit_payment(
 - **Base** (Chain ID: 8453) - Base (USDT not supported)
 - **Polygon** (Chain ID: 137) - Polygon PoS
 - **Arbitrum** (Chain ID: 42161) - Arbitrum One
+
+---
+
+## 🛡️ Security & Rate Limits (AIF)
+
+**AIF (Agent Interaction Firewall)** is the first firewall built specifically for AI agents, protecting agents from other agents in the autonomous economy.
+
+### Rate Limits
+
+| User Type | Rate Limit | Benefits |
+|-----------|------------|----------|
+| **Anonymous** | 20 requests/min | Basic access, no signup required |
+| **With Account** | 100 requests/min | **5x more requests**, payment history, reputation tracking |
+
+**Per-Endpoint Limits:**
+- `/health` - 60 requests/min
+- `/mandates/issue` - 20 requests/min
+- `/x402/resource` - 60 requests/min
+- User signup - 5 per hour per IP
+
+**Rate limit headers** (RFC 6585 compliant):
+```
+X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 95
+X-RateLimit-Reset: 1234567890
+Retry-After: 42
+```
+
+### Security Features
+
+**1. Distributed Rate Limiting**
+- ✅ Production-ready DynamoDB atomic counters
+- ✅ Enforced across ALL Lambda containers
+- ✅ 1-minute fixed windows with automatic TTL cleanup
+- ✅ Graceful degradation (fails open on errors)
+
+**2. Replay Protection**
+- ✅ TX-hash based nonces (cryptographically unique)
+- ✅ 24-hour TTL on used nonces
+- ✅ Prevents double-spending at API level
+- ✅ Automatic detection: uses `tx_hash` or explicit `nonce`
+
+**3. Agent Reputation System** (Enabled by default)
+- Score range: **0-200** (new agents start at 100)
+- Blocking thresholds:
+  - **0-30**: ❌ Blocked (bad actor)
+  - **31-60**: ⚠️ Warning (suspicious)
+  - **61-200**: ✅ Allowed (good standing)
+- Real-time tracking of agent behavior
+- Fail-open design (errors never break payments)
+- Manual override available for false positives
+
+**4. Mandatory Mandates** (Breaking change Nov 2024)
+- ⚠️ All payments MUST have an AP2 mandate
+- Budget tracking and enforcement
+- Scope validation (permissions)
+- Prevents unauthorized payments
+
+### How to Increase Limits
+
+**Create a free account** to get 5x more requests:
+
+```typescript
+// JavaScript
+const user = await client.auth.signup({
+  email: 'agent@example.com',
+  password: 'secure_password',
+  account_type: 'agent' // or 'merchant' or 'both'
+});
+
+// Auto-generated API key (shown once)
+console.log(user.api_key); // pk_live_abc123...
+```
+
+```python
+# Python
+user = client.auth.signup(
+    email='agent@example.com',
+    password='secure_password',
+    account_type='agent'  # or 'merchant' or 'both'
+)
+
+# Auto-generated API key (shown once)
+print(user['api_key'])  # pk_live_abc123...
+```
+
+**Then use your API key:**
+```typescript
+const client = new AgentGatePayClient({
+  apiKey: 'pk_live_abc123...',  // ← 100 requests/min
+  baseUrl: 'https://api.agentgatepay.com'
+});
+```
+
+### Handling Rate Limits
+
+**Best Practices:**
+1. **Check response headers** for remaining quota
+2. **Implement exponential backoff** on 429 errors
+3. **Cache mandate tokens** (reuse for multiple payments)
+4. **Respect `Retry-After` header**
+
+**Example:**
+```typescript
+try {
+  const mandate = await client.mandates.issue({...});
+} catch (error) {
+  if (error.status === 429) {
+    const retryAfter = error.headers['retry-after'];
+    console.log(`Rate limited. Retry after ${retryAfter} seconds`);
+    await sleep(retryAfter * 1000);
+    // Retry...
+  }
+}
+```
 
 ---
 
