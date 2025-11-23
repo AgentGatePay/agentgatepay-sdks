@@ -235,7 +235,8 @@ export class ConfigLoader {
     const expiresDate = new Date(this.mandateExpiresAt);
     console.log(`✓ Mandate created successfully (expires: ${expiresDate.toISOString()})`);
 
-    return this.cachedMandateToken;
+    // TypeScript: cachedMandateToken is guaranteed to be set at this point
+    return this.cachedMandateToken as string;
   }
 
   /**

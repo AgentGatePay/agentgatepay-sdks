@@ -214,8 +214,8 @@ export class PaymentsModule {
       await tx.wait();
       console.log('Transaction confirmed!');
 
-      // Submit to AgentPay
-      return await this.submitTxHash(mandate, tx.hash, chain, token);
+      // Submit to AgentPay (txHashCommission = undefined for this simple flow)
+      return await this.submitTxHash(mandate, tx.hash, undefined, chain, token);
 
     } catch (error: any) {
       throw new Error(`Failed to send transaction: ${error.message}`);
