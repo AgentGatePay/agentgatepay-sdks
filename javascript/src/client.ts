@@ -135,6 +135,6 @@ export class AgentGatePay {
    * Get SDK version
    */
   static get version(): string {
-    return '1.1.0';
+    return '1.1.1';
   }
 }
