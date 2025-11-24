@@ -9,6 +9,9 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required for creating releases
+      packages: write
 
     steps:
       - name: Checkout code
