@@ -12,7 +12,7 @@ from .exceptions import (
     MandateError,
 )
 
-__version__ = "1.1.2"
+__version__ = "1.1.3"
 __all__ = [
     "AgentGatePay",
     "AgentGatePayError",
