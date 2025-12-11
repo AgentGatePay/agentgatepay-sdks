@@ -1,37 +1,39 @@
 Copyright (c) 2025 AgentGatePay. All rights reserved.
 
-SDK LICENSE
+END USER LICENSE AGREEMENT
 
-This SDK is provided to enable integration with AgentGatePay services.
+This SDK is the proprietary property of AgentGatePay.
 
-PERMITTED USE:
-You may freely use this SDK to:
-- Integrate AgentGatePay into your applications (commercial or non-commercial)
-- Build products and services that connect to AgentGatePay APIs
-- Create proprietary/closed-source applications using this SDK
-- Modify the SDK to fit your integration needs
-- Include this SDK in your distributed applications
-- Publish applications that depend on this SDK
+PERMITTED USE
 
-RESTRICTIONS:
-This license does NOT grant rights to:
-- The AgentGatePay service, infrastructure, or backend systems
-- Recreate or duplicate the AgentGatePay platform
-- Create competing payment gateway services
+You may use this SDK to:
+- Connect your applications to AgentGatePay services
+- Build commercial or non-commercial applications that integrate with AgentGatePay
+- Include this SDK as a dependency in your applications
 
-OWNERSHIP:
-AgentGatePay services, APIs, protocols, and infrastructure remain the
+RESTRICTIONS
+
+You may not:
+- Copy, modify, or redistribute this SDK code
+- Reverse engineer or decompile this SDK
+- Remove copyright or proprietary notices
+- Use this SDK for illegal or fraudulent purposes
+- Use this SDK to build competing payment gateway services
+
+USAGE TERMS
+
+This SDK connects to AgentGatePay services which operate under AgentGatePay's
+terms of service, including applicable transaction fees and commissions.
+
+OWNERSHIP
+
+This SDK, and all AgentGatePay services, APIs, and infrastructure, are the
 exclusive proprietary property of AgentGatePay.
 
-NO WARRANTY:
-This SDK is provided "AS IS" without warranty of any kind.
+NO WARRANTY
 
----
+This SDK is provided "AS IS" without warranty of any kind, express or implied,
+including but not limited to warranties of merchantability, fitness for a
+particular purpose, or non-infringement.
 
-INTEGRATIONS WELCOMED
-
-You are explicitly encouraged to build commercial applications, SaaS products,
-and proprietary systems using this SDK. No approval needed. No restrictions on
-commercial use of your applications.
-
-Questions? support@agentgatepay.com
+For support: support@agentgatepay.com
