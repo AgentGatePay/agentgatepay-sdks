@@ -6,6 +6,24 @@ Official JavaScript/TypeScript and Python SDKs for [AgentGatePay](https://api.ag
 [![PyPI version](https://badge.fury.io/py/agentgatepay-sdk.svg)](https://pypi.org/project/agentgatepay-sdk/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+---
+
+## ⚠️ IMPORTANT DISCLAIMER
+
+**AgentGatePay is currently in BETA.** By using this SDK and service, you acknowledge and accept:
+
+- **Service Availability:** The service may be unavailable, suspended, or permanently shut down at any time without prior notice. No SLA or uptime guarantees.
+- **Data Loss Risk:** All data may be lost at any time without recovery. Users are solely responsible for maintaining independent backups.
+- **No Liability:** AgentGatePay is NOT LIABLE for any direct, indirect, or consequential damages including lost cryptocurrency, failed transactions, service interruptions, or loss of revenue.
+- **Financial Risk:** Blockchain transactions are irreversible. Users are solely responsible for securing private keys, API keys, and compliance with laws.
+- **No Warranty:** This SDK is provided "AS IS" without warranties of any kind.
+
+**📄 Read the full [DISCLAIMER.md](DISCLAIMER.md) before using.**
+
+**BY USING THIS SDK, YOU AGREE TO THESE TERMS.**
+
+---
+
 ## Overview
 
 AgentGatePay enables AI agents to make and accept cryptocurrency payments with multi-chain support (Ethereum, Base, Polygon, Arbitrum) for stablecoins (USDC, USDT, DAI).
