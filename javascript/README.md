@@ -757,7 +757,7 @@ console.log(user.apiKey); // Use this for 5x rate limit!
 
 ### Security Features
 
-- ✅ **Distributed rate limiting** (DynamoDB atomic counters)
+- ✅ **Distributed rate limiting** (production-grade implementation)
 - ✅ **Replay protection** (TX-hash nonces, 24h TTL)
 - ✅ **Agent reputation system** (0-200 score, enabled by default)
 - ✅ **Mandatory mandates** (budget & scope enforcement)

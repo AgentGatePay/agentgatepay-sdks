@@ -155,8 +155,8 @@ Retry-After: 42
 ### Security Features
 
 **1. Distributed Rate Limiting**
-- ✅ Production-ready DynamoDB atomic counters
-- ✅ Enforced across ALL Lambda containers
+- ✅ Production-ready distributed counters
+- ✅ Enforced across all server instances
 - ✅ 1-minute fixed windows with automatic TTL cleanup
 - ✅ Graceful degradation (fails open on errors)
 
