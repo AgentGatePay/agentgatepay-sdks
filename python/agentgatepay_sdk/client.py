@@ -120,4 +120,4 @@ class AgentGatePay:
     @staticmethod
     def version() -> str:
         """Get SDK version"""
-        return "1.1.3"
+        return "1.1.5"
