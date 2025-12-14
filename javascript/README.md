@@ -17,6 +17,12 @@ Official JavaScript/TypeScript SDK for [AgentGatePay](https://agentgatepay.io) -
 - **Analytics** - Built-in revenue and spending tracking
 - **Zero dependencies** (except axios) - Lightweight and fast
 
+**Gateway Commission:** 0.5% fee on all payments
+- Automatically deducted via two-transaction model
+- Commission TX: 0.5% → AgentGatePay wallet (covers infrastructure costs)
+- Merchant TX: 99.5% → seller wallet
+- Both transactions atomic and transparent on-chain
+
 ## Installation
 
 ```bash
